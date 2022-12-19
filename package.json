@@ -9,11 +9,10 @@
 		"eject": "react-scripts eject"
 	},
 	"dependencies": {
-		"@types/styled-components": "^5.1.26",
-		"@vanilla-extract/css": "^1.9.2",
 		"axios": "^1.2.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"react-router-dom": "^6.5.0",
 		"react-scripts": "5.0.1",
 		"styled-components": "^5.3.6",
 		"typescript": "^4.4.2",
@@ -24,6 +23,7 @@
 		"@types/node": "^16.7.13",
 		"@types/react": "^18.0.0",
 		"@types/react-dom": "^18.0.0",
+		"@types/styled-components": "^5.1.26",
 		"eslint-config-prettier": "^8.5.0",
 		"prettier": "^2.8.1"
 	},
@@ -31,7 +31,16 @@
 		"extends": [
 			"react-app",
 			"prettier"
-		]
+		],
+		"rules": {
+			"react/jsx-curly-brace-presence": [
+				"error",
+				{
+					"props": "always",
+					"children": "ignore"
+				}
+			]
+		}
 	},
 	"browserslist": {
 		"production": [

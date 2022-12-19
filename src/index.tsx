@@ -1,22 +1,25 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { ReportHandler } from 'web-vitals'
+import { App } from './App'
 
 import './index.css'
 import './normalize.css'
-import { Home } from './components/Home'
 
-ReactDOM.render(
-	<React.StrictMode>
-		<Home />
-	</React.StrictMode>,
-	document.getElementById('root'),
-)
+main()
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals(console.log)
+function main() {
+	renderApp()
+	reportWebVitals(console.log)
+}
+
+function renderApp() {
+	const rootElement = document.getElementById('root')
+	if (!rootElement) {
+		throw new Error('Cannot get app root element.')
+	}
+	const root = createRoot(rootElement)
+	root.render(<App />)
+}
 
 function reportWebVitals(onPerfEntry?: ReportHandler) {
 	if (onPerfEntry && onPerfEntry instanceof Function) {
