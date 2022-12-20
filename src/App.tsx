@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import { AppLayout } from './components'
+import { AppContainer } from './components/container'
 import {
 	AboutUsPage,
 	ContactsPage,
@@ -16,7 +16,7 @@ export function App() {
 		<StrictMode>
 			<BrowserRouter>
 				<Routes>
-					<Route path={'/'} element={<AppLayout />}>
+					<Route path={'/'} element={<AppContainer />}>
 						<Route
 							index={true}
 							element={<HomePage />}
