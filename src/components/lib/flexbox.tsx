@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 interface Props {
+	$position?: React.CSSProperties['position']
 	$width?: React.CSSProperties['width']
 	$height?: React.CSSProperties['height']
 	$minWidth?: React.CSSProperties['minWidth']
@@ -14,10 +15,13 @@ interface Props {
 	$align?: React.CSSProperties['alignItems']
 	$justify?: React.CSSProperties['justifyContent']
 	$grow?: React.CSSProperties['flexGrow']
+	$direction?: React.CSSProperties['flexDirection']
 }
 
 const FlexboxProps = css<Props>`
 	display: flex;
+	position: ${({ $position }) => $position};
+	position: ${({ $position }) => $position};
 	width: ${({ $width }) => $width};
 	height: ${({ $height }) => $height};
 	min-width: ${({ $minWidth }) => $minWidth};
@@ -30,13 +34,15 @@ const FlexboxProps = css<Props>`
 	align-items: ${({ $align }) => $align};
 	justify-content: ${({ $justify }) => $justify};
 	flex-grow: ${({ $grow }) => $grow};
+	flex-direction: ${({ $direction }) => $direction};
 `
 
-export const Row = styled.div<Props>`
+export const Flex = styled.div<Props>`
 	${FlexboxProps};
+`
+export const Row = styled(Flex)<Props>`
 	flex-direction: row;
 `
-export const Col = styled.div<Props>`
-	${FlexboxProps};
+export const Col = styled(Flex)<Props>`
 	flex-direction: column;
 `

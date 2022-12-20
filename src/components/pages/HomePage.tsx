@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import styled from 'styled-components'
-import { Colors } from '../../config'
+import { Colors, SCREEN_BREAKPOINTS_PX } from '../../config'
 import { Col, Headline, Link, ResponsiveWrap, Row, Text } from '../lib'
 import { ReactComponent as BlockImage } from '../../assets/home-page-image-1.svg'
 import { ReactComponent as Ornament } from '../../assets/home-page-ornament.svg'
@@ -51,9 +51,7 @@ export function HomePage() {
 							}
 						/>
 					</Col>
-					<Row>
-						<MainImage src={MainImageSrc} />
-					</Row>
+					<MainImage src={MainImageSrc} />
 				</Row>
 			</ResponsiveWrap>
 			<StyledOrnament />
@@ -64,7 +62,7 @@ export function HomePage() {
 function Block(props: { image?: ReactNode; headline: ReactNode; content: ReactNode }) {
 	return (
 		<Col $grow={1}>
-			<Row $gap={'2rem'}>
+			<Row $gap={'2rem'} $align={'center'}>
 				<Row $minWidth={'4rem'} $minHeight={'4rem'}>
 					{props.image}
 				</Row>
@@ -85,6 +83,10 @@ const Wrap = styled.div`
 `
 const MainImage = styled.img`
 	object-fit: contain;
+	width: 33%;
+	@media screen and (max-width: calc(${SCREEN_BREAKPOINTS_PX.SM} - 1px)) {
+		display: none;
+	}
 `
 const StyledOrnament = styled(Ornament)`
 	position: absolute;

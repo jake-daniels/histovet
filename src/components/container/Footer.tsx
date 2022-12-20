@@ -1,10 +1,6 @@
 import { Col, ResponsiveWrap, Text } from '../lib'
 
-interface IProps {}
-
-export function Footer(props: IProps) {
-	const {} = props
-
+export function Footer() {
 	return (
 		<footer>
 			<ResponsiveWrap>

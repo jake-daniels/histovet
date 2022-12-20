@@ -1,45 +1,53 @@
+import { FaBars } from 'react-icons/fa'
 import { Link, NavLink as RouterNavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { ReactComponent as HomeIcon } from '../../assets/home-icon.svg'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
-import { Colors } from '../../config'
+import { Colors, SCREEN_BREAKPOINTS_PX } from '../../config'
+import { useIsMobile } from '../../hooks'
 import { ResponsiveWrap, Row, Text } from '../lib'
 
-interface IProps {}
-
-export function Header(props: IProps) {
-	const {} = props
+export function Header() {
+	const isMobile = useIsMobile()
 
 	return (
 		<header>
 			<ResponsiveWrap>
-				<Row $width={'100%'} $align={'flex-end'} $justify={'space-between'} $padding={'2rem 0 1rem 0'}>
+				<Row
+					$width={'100%'}
+					$align={isMobile ? 'center' : 'flex-end'}
+					$justify={'space-between'}
+					$padding={'2rem 0 1rem 0'}
+				>
 					<Link to={'/'}>
 						<Logo width={128} height={128} />
 					</Link>
-					<Navigation>
-						<NavLink to={'/'}>
-							<HomeIcon width={20} height={20} />
-						</NavLink>
-						<NavLink to={'about-us'}>
-							<Text>Kdo jsme</Text>
-						</NavLink>
-						<NavLink to={'pricing'}>
-							<Text>Ceník</Text>
-						</NavLink>
-						<NavLink to={'contacts'}>
-							<Text>Kontakty</Text>
-						</NavLink>
-						<NavLink to={'samples'}>
-							<Text>Zasílání vzorků</Text>
-						</NavLink>
-						<NavLink to={'request-forms'}>
-							<Text>Žádanky</Text>
-						</NavLink>
-						<NavLink to={'news'}>
-							<Text>Aktuality</Text>
-						</NavLink>
-					</Navigation>
+					{isMobile && <FaBars size={48} />}
+					{!isMobile && (
+						<Navigation>
+							<NavLink to={'/'}>
+								<HomeIcon width={20} height={20} />
+							</NavLink>
+							<NavLink to={'about-us'}>
+								<span>Kdo jsme</span>
+							</NavLink>
+							<NavLink to={'pricing'}>
+								<span>Ceník</span>
+							</NavLink>
+							<NavLink to={'contacts'}>
+								<span>Kontakty</span>
+							</NavLink>
+							<NavLink to={'samples'}>
+								<span>Zasílání vzorků</span>
+							</NavLink>
+							<NavLink to={'request-forms'}>
+								<span>Žádanky</span>
+							</NavLink>
+							<NavLink to={'news'}>
+								<span>Aktuality</span>
+							</NavLink>
+						</Navigation>
+					)}
 				</Row>
 			</ResponsiveWrap>
 		</header>
@@ -56,6 +64,8 @@ const NavLink = styled(RouterNavLink)`
 	border-bottom: 2px solid transparent;
 	text-decoration: none;
 	color: ${Colors.Black};
+	font-weight: 500;
+	white-space: nowrap;
 	&:hover {
 		border-color: ${Colors.Orange};
 	}
@@ -64,5 +74,8 @@ const NavLink = styled(RouterNavLink)`
 		${Text} {
 			color: ${Colors.Orange};
 		}
+	}
+	@media screen and (max-width: ${SCREEN_BREAKPOINTS_PX.SM}) {
+		padding: 0.25rem 0.5rem;
 	}
 `
