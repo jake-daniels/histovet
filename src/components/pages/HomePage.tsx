@@ -5,7 +5,7 @@ import MainImageSrc from '../../assets/home-page-image-2.png'
 import { ReactComponent as Ornament } from '../../assets/home-page-ornament.svg'
 import { Colors, SCREEN_BREAKPOINTS } from '../../config'
 import { useWindowSize } from '../../hooks'
-import { Col, Headline, Link, ResponsiveWrap, Row, Text } from '../lib'
+import { Col, Headline, Link, Paragraph, ResponsiveWrap, Row, Text } from '../lib'
 
 export function HomePage() {
 	return (
@@ -22,14 +22,14 @@ export function HomePage() {
 								</Headline>
 							}
 							content={
-								<Text color={'white'}>
+								<Paragraph color={'white'}>
 									Nabízíme histopatologické vyšetření Vámi zaslaných bioptátů a další doplňková vyšetření, jako jsou
 									speciální histologická barvení a imunohistochemie. Dále nabízíme cytologické vyšetření tenkojehelných
 									a dalších bioptátů a tělních tekutin. Vyšetření se vždy snažíme provést v co nejkratším čase,
 									zpravidla do tří dnů od doručení do laboratoře. Sledujeme nejnovější trendy v diagnostice a používáme
 									aktuální gradingová schémata. Jsme vždy otevřeni konzultovat vaše případy i poradit s odběrem vzorků,
 									abychom společně s Vámi stanovili správnou diagnózu.
-								</Text>
+								</Paragraph>
 							}
 						/>
 						<Block
@@ -38,7 +38,7 @@ export function HomePage() {
 								<Headline color={'orange'}>Veterinární medicína běží kupředu mílovými kroky a my běžíme s ní.</Headline>
 							}
 							content={
-								<Text color={'white'}>
+								<Paragraph color={'white'}>
 									Díky naší spolupráci s humánní bioptickou laboratoří Histos s.r.o. si Vám můžeme dovolit nabídnout{' '}
 									<Link color={'white'} to={'/pricing'}>
 										bezkonkurenční ceny
@@ -48,7 +48,7 @@ export function HomePage() {
 										nás kontaktovat
 									</Link>
 									.
-								</Text>
+								</Paragraph>
 							}
 						/>
 					</Col>

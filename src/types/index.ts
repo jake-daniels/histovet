@@ -4,3 +4,9 @@ export interface ISize {
 }
 
 export type DeviceType = 'desktop' | 'mobile'
+
+export interface IPerson {
+	name: string
+	description: string
+	image: string
+}

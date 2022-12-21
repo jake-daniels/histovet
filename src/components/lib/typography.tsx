@@ -14,6 +14,10 @@ export const Text = styled.span<{ color?: TextColor }>`
 	font-weight: 500;
 	color: ${({ color }) => ColorMap[color ?? 'black']};
 `
+export const Paragraph = styled.p<{ color?: TextColor }>`
+	font-weight: 500;
+	color: ${({ color }) => ColorMap[color ?? 'black']};
+`
 export const Headline = styled.h3<{ color?: TextColor }>`
 	font-weight: 500;
 	color: ${({ color }) => ColorMap[color ?? 'black']};
