@@ -5,58 +5,56 @@ import MainImageSrc from '../../assets/home-page-image-2.png'
 import { ReactComponent as Ornament } from '../../assets/home-page-ornament.svg'
 import { Colors, SCREEN_BREAKPOINTS } from '../../config'
 import { useWindowSize } from '../../hooks'
-import { Col, Headline, Link, Paragraph, ResponsiveWrap, Row, Text } from '../lib'
+import { Col, Headline, Link, Page, Paragraph, Row, Text } from '../lib'
 
 export function HomePage() {
 	return (
-		<Wrap>
-			<ResponsiveWrap>
-				<Row $align={'center'} $gap={'6rem'}>
-					<Col $gap={'2rem'}>
-						<Block
-							image={undefined}
-							headline={
-								<Headline color={'white'}>
-									Provádíme <Text color={'orange'}>histopatologické</Text> a <Text color={'orange'}>cytologické</Text>{' '}
-									vyšetření pro veterinární lékaře.
-								</Headline>
-							}
-							content={
-								<Paragraph color={'white'}>
-									Nabízíme histopatologické vyšetření Vámi zaslaných bioptátů a další doplňková vyšetření, jako jsou
-									speciální histologická barvení a imunohistochemie. Dále nabízíme cytologické vyšetření tenkojehelných
-									a dalších bioptátů a tělních tekutin. Vyšetření se vždy snažíme provést v co nejkratším čase,
-									zpravidla do tří dnů od doručení do laboratoře. Sledujeme nejnovější trendy v diagnostice a používáme
-									aktuální gradingová schémata. Jsme vždy otevřeni konzultovat vaše případy i poradit s odběrem vzorků,
-									abychom společně s Vámi stanovili správnou diagnózu.
-								</Paragraph>
-							}
-						/>
-						<Block
-							image={<BlockImage width={64} height={64} />}
-							headline={
-								<Headline color={'orange'}>Veterinární medicína běží kupředu mílovými kroky a my běžíme s ní.</Headline>
-							}
-							content={
-								<Paragraph color={'white'}>
-									Díky naší spolupráci s humánní bioptickou laboratoří Histos s.r.o. si Vám můžeme dovolit nabídnout{' '}
-									<Link color={'white'} to={'/pricing'}>
-										bezkonkurenční ceny
-									</Link>{' '}
-									za vyšetření bioptátů. Přejete-li si s námi spolupracovat, neváhejte{' '}
-									<Link color={'white'} to={'/contacts'}>
-										nás kontaktovat
-									</Link>
-									.
-								</Paragraph>
-							}
-						/>
-					</Col>
-					<MainImage src={MainImageSrc} />
-				</Row>
-			</ResponsiveWrap>
+		<StyledPage>
+			<Row $align={'center'} $gap={'6rem'}>
+				<Col $gap={'2rem'}>
+					<Block
+						image={undefined}
+						headline={
+							<Headline $color={'white'}>
+								Provádíme <Text $color={'orange'}>histopatologické</Text> a <Text $color={'orange'}>cytologické</Text>{' '}
+								vyšetření pro veterinární lékaře.
+							</Headline>
+						}
+						content={
+							<Paragraph $color={'white'}>
+								Nabízíme histopatologické vyšetření Vámi zaslaných bioptátů a další doplňková vyšetření, jako jsou
+								speciální histologická barvení a imunohistochemie. Dále nabízíme cytologické vyšetření tenkojehelných a
+								dalších bioptátů a tělních tekutin. Vyšetření se vždy snažíme provést v co nejkratším čase, zpravidla do
+								tří dnů od doručení do laboratoře. Sledujeme nejnovější trendy v diagnostice a používáme aktuální
+								gradingová schémata. Jsme vždy otevřeni konzultovat vaše případy i poradit s odběrem vzorků, abychom
+								společně s Vámi stanovili správnou diagnózu.
+							</Paragraph>
+						}
+					/>
+					<Block
+						image={<BlockImage width={64} height={64} />}
+						headline={
+							<Headline $color={'orange'}>Veterinární medicína běží kupředu mílovými kroky a my běžíme s ní.</Headline>
+						}
+						content={
+							<Paragraph $color={'white'}>
+								Díky naší spolupráci s humánní bioptickou laboratoří Histos s.r.o. si Vám můžeme dovolit nabídnout{' '}
+								<Link $color={'white'} to={'/pricing'}>
+									bezkonkurenční ceny
+								</Link>{' '}
+								za vyšetření bioptátů. Přejete-li si s námi spolupracovat, neváhejte{' '}
+								<Link $color={'white'} to={'/contacts'}>
+									nás kontaktovat
+								</Link>
+								.
+							</Paragraph>
+						}
+					/>
+				</Col>
+				<MainImage src={MainImageSrc} />
+			</Row>
 			<StyledOrnament />
-		</Wrap>
+		</StyledPage>
 	)
 }
 
@@ -79,12 +77,7 @@ function Block(props: { image?: ReactNode; headline: ReactNode; content: ReactNo
 	)
 }
 
-const Wrap = styled.section`
-	position: relative;
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	padding: 4rem 0;
+const StyledPage = styled(Page)`
 	background: linear-gradient(to right, ${Colors.Gradient.Left}, ${Colors.Gradient.Right});
 `
 const MainImage = styled.img`

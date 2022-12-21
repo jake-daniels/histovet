@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { CgClose } from 'react-icons/cg'
 import { FaBars } from 'react-icons/fa'
 import styled, { css } from 'styled-components'
-import { Colors } from '../../config'
+import { Colors, HEADER_HEIGHT_MOBILE } from '../../config'
 import { Col } from '../lib'
 import { NavLink } from './NavLink'
 
@@ -66,6 +66,31 @@ export function Menu() {
 	)
 }
 
+const MenuWrap = styled.div`
+	position: relative;
+`
+const List = styled(Col)`
+	position: fixed;
+	z-index: 1;
+	top: ${HEADER_HEIGHT_MOBILE}px;
+	right: 0px;
+	width: 100%;
+	background: linear-gradient(to right, ${Colors.Gradient.Left}, ${Colors.Gradient.Right});
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 250ms ease-out;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+`
+const MenuNavLink = styled(NavLink)`
+	color: ${Colors.White};
+	font-size: 20px;
+	padding: 1.5rem 2rem;
+	border: none;
+	&:hover {
+		color: ${Colors.Black};
+		background: ${Colors.White};
+	}
+`
 const MenuIconCss = css`
 	color: ${Colors.Black};
 	cursor: pointer;
@@ -79,28 +104,4 @@ const ClosedMenuIcon = styled(FaBars)`
 `
 const OpenMenuIcon = styled(CgClose)`
 	${MenuIconCss}
-`
-const MenuWrap = styled.div`
-	position: relative;
-`
-const List = styled(Col)`
-	position: fixed;
-	z-index: 1;
-	top: 9rem;
-	right: 0px;
-	width: 100%;
-	background: linear-gradient(to right, ${Colors.Gradient.Left}, ${Colors.Gradient.Right});
-	max-height: 0;
-	overflow: hidden;
-	transition: max-height 250ms ease-out;
-`
-const MenuNavLink = styled(NavLink)`
-	color: ${Colors.White};
-	font-size: 20px;
-	padding: 1.5rem 2rem;
-	border: none;
-	&:hover {
-		color: ${Colors.Black};
-		background: ${Colors.White};
-	}
 `

@@ -1,22 +1,22 @@
-import React from 'react'
+import { CSSProperties } from 'react'
 import styled, { css } from 'styled-components'
 
 interface Props {
-	$position?: React.CSSProperties['position']
-	$display?: React.CSSProperties['display']
-	$width?: React.CSSProperties['width']
-	$height?: React.CSSProperties['height']
-	$minWidth?: React.CSSProperties['minWidth']
-	$minHeight?: React.CSSProperties['minHeight']
-	$maxWidth?: React.CSSProperties['maxWidth']
-	$maxHeight?: React.CSSProperties['maxHeight']
-	$padding?: React.CSSProperties['padding']
-	$margin?: React.CSSProperties['margin']
-	$gap?: React.CSSProperties['gap']
-	$align?: React.CSSProperties['alignItems']
-	$justify?: React.CSSProperties['justifyContent']
-	$grow?: React.CSSProperties['flexGrow']
-	$direction?: React.CSSProperties['flexDirection']
+	$position?: CSSProperties['position']
+	$display?: CSSProperties['display']
+	$width?: CSSProperties['width']
+	$height?: CSSProperties['height']
+	$minWidth?: CSSProperties['minWidth']
+	$minHeight?: CSSProperties['minHeight']
+	$maxWidth?: CSSProperties['maxWidth']
+	$maxHeight?: CSSProperties['maxHeight']
+	$padding?: CSSProperties['padding']
+	$margin?: CSSProperties['margin']
+	$gap?: CSSProperties['gap']
+	$align?: CSSProperties['alignItems']
+	$justify?: CSSProperties['justifyContent']
+	$grow?: CSSProperties['flexGrow']
+	$direction?: CSSProperties['flexDirection']
 }
 
 const FlexboxProps = css<Props>`

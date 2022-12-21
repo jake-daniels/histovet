@@ -1,3 +1,4 @@
-export * from './flexbox'
-export * from './typography'
-export * from './responsive-wrap'
+export * from './Flexbox'
+export * from './Typography'
+export * from './ResponsiveWrap'
+export * from './Page'
