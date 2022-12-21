@@ -1,17 +1,18 @@
 import { ReactNode } from 'react'
 import styled from 'styled-components'
-import { Colors, SCREEN_BREAKPOINTS_PX } from '../../config'
-import { Col, Headline, Link, ResponsiveWrap, Row, Text } from '../lib'
 import { ReactComponent as BlockImage } from '../../assets/home-page-image-1.svg'
-import { ReactComponent as Ornament } from '../../assets/home-page-ornament.svg'
 import MainImageSrc from '../../assets/home-page-image-2.png'
+import { ReactComponent as Ornament } from '../../assets/home-page-ornament.svg'
+import { Colors, SCREEN_BREAKPOINTS } from '../../config'
+import { useWindowSize } from '../../hooks'
+import { Col, Headline, Link, ResponsiveWrap, Row, Text } from '../lib'
 
 export function HomePage() {
 	return (
 		<Wrap>
 			<ResponsiveWrap>
 				<Row $align={'center'} $gap={'6rem'}>
-					<Col $gap={'1rem'}>
+					<Col $gap={'2rem'}>
 						<Block
 							image={undefined}
 							headline={
@@ -34,7 +35,7 @@ export function HomePage() {
 						<Block
 							image={<BlockImage width={64} height={64} />}
 							headline={
-								<Headline color={'orange'}>Veterinární medicína běží kupředu mílovými kroky a my běžíme s ní</Headline>
+								<Headline color={'orange'}>Veterinární medicína běží kupředu mílovými kroky a my běžíme s ní.</Headline>
 							}
 							content={
 								<Text color={'white'}>
@@ -60,31 +61,36 @@ export function HomePage() {
 }
 
 function Block(props: { image?: ReactNode; headline: ReactNode; content: ReactNode }) {
+	const { width } = useWindowSize()
+
+	const smallScreen = width < SCREEN_BREAKPOINTS.SM
+	const indentText = props.image || !smallScreen
+
 	return (
-		<Col $grow={1}>
-			<Row $gap={'2rem'} $align={'center'}>
-				<Row $minWidth={'4rem'} $minHeight={'4rem'}>
+		<Col $grow={1} $gap={'0.5rem'}>
+			<Row $gap={indentText ? '2rem' : 0} $align={'center'}>
+				<Row $display={indentText ? 'flex' : 'none'} $minWidth={'4rem'} $minHeight={'4rem'}>
 					{props.image}
 				</Row>
 				{props.headline}
 			</Row>
-			<Row $padding={'0 0 0 6rem'}> {props.content}</Row>
+			<Row $padding={smallScreen ? 0 : '0 0 0 6rem'}> {props.content}</Row>
 		</Col>
 	)
 }
 
-const Wrap = styled.div`
+const Wrap = styled.section`
 	position: relative;
 	display: flex;
 	justify-content: center;
 	width: 100%;
-	padding: 2rem 0;
+	padding: 4rem 0;
 	background: linear-gradient(to right, ${Colors.Gradient.Left}, ${Colors.Gradient.Right});
 `
 const MainImage = styled.img`
 	object-fit: contain;
 	width: 33%;
-	@media screen and (max-width: calc(${SCREEN_BREAKPOINTS_PX.SM} - 1px)) {
+	@media screen and (max-width: ${SCREEN_BREAKPOINTS.SM - 1}px) {
 		display: none;
 	}
 `

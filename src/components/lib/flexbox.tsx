@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 
 interface Props {
 	$position?: React.CSSProperties['position']
+	$display?: React.CSSProperties['display']
 	$width?: React.CSSProperties['width']
 	$height?: React.CSSProperties['height']
 	$minWidth?: React.CSSProperties['minWidth']
@@ -19,8 +20,7 @@ interface Props {
 }
 
 const FlexboxProps = css<Props>`
-	display: flex;
-	position: ${({ $position }) => $position};
+	display: ${({ $display }) => $display ?? 'flex'};
 	position: ${({ $position }) => $position};
 	width: ${({ $width }) => $width};
 	height: ${({ $height }) => $height};

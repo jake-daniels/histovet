@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import styled from 'styled-components'
-import { SCREEN_BREAKPOINTS_PX } from '../../config'
+import { SCREEN_BREAKPOINTS } from '../../config'
 
 export function ResponsiveWrap(props: { children: ReactNode }) {
 	return <Wrap>{props.children}</Wrap>
@@ -14,15 +14,18 @@ const Wrap = styled.div`
 	padding: 0 ${SIDE_PADDING};
 
 	@media screen and (min-width: 0) {
-		width: calc(${SCREEN_BREAKPOINTS_PX.XS} - ${SIDE_PADDING} * 2 - ${SCROLLBAR_WIDTH});
+		width: 100%;
 	}
-	@media screen and (min-width: ${SCREEN_BREAKPOINTS_PX.SM}) {
-		width: calc(${SCREEN_BREAKPOINTS_PX.SM} - ${SIDE_PADDING} * 2 - ${SCROLLBAR_WIDTH});
+	@media screen and (min-width: ${SCREEN_BREAKPOINTS.XS}px) {
+		width: calc(${SCREEN_BREAKPOINTS.XS}px - ${SIDE_PADDING} * 2 - ${SCROLLBAR_WIDTH});
 	}
-	@media screen and (min-width: ${SCREEN_BREAKPOINTS_PX.MD}) {
-		width: calc(${SCREEN_BREAKPOINTS_PX.MD} - ${SIDE_PADDING} * 2 - ${SCROLLBAR_WIDTH});
+	@media screen and (min-width: ${SCREEN_BREAKPOINTS.SM}px) {
+		width: calc(${SCREEN_BREAKPOINTS.SM}px - ${SIDE_PADDING} * 2 - ${SCROLLBAR_WIDTH});
 	}
-	@media screen and (min-width: ${SCREEN_BREAKPOINTS_PX.LG}) {
-		width: calc(${SCREEN_BREAKPOINTS_PX.LG} - ${SIDE_PADDING} * 2 - ${SCROLLBAR_WIDTH});
+	@media screen and (min-width: ${SCREEN_BREAKPOINTS.MD}px) {
+		width: calc(${SCREEN_BREAKPOINTS.MD}px - ${SIDE_PADDING} * 2 - ${SCROLLBAR_WIDTH});
+	}
+	@media screen and (min-width: ${SCREEN_BREAKPOINTS.LG}px) {
+		width: calc(${SCREEN_BREAKPOINTS.LG}px - ${SIDE_PADDING} * 2 - ${SCROLLBAR_WIDTH});
 	}
 `
