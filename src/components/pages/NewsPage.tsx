@@ -1,11 +1,11 @@
-interface IProps {}
+import { LeftOrnament, Page, RightOrnament } from '../lib'
 
-export function NewsPage(props: IProps) {
-	const {} = props
-
+export function NewsPage() {
 	return (
-		<div>
-			<span>NewsPage</span>
-		</div>
+		<Page>
+			Lorem ipsum
+			<LeftOrnament $left={'0px'} $top={'2rem'} />
+			<RightOrnament $right={'0px'} $bottom={'1rem'} />
+		</Page>
 	)
 }

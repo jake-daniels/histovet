@@ -48,11 +48,11 @@ export function Menu() {
 					<MenuNavLink to={'pricing'}>
 						<span>Ceník</span>
 					</MenuNavLink>
-					<MenuNavLink to={'contacts'}>
-						<span>Kontakty</span>
-					</MenuNavLink>
 					<MenuNavLink to={'samples'}>
 						<span>Zasílání vzorků</span>
+					</MenuNavLink>
+					<MenuNavLink to={'contacts'}>
+						<span>Kontakty</span>
 					</MenuNavLink>
 					<MenuNavLink to={'news'}>
 						<span>Aktuality</span>
