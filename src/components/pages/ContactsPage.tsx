@@ -1,5 +1,3 @@
-import styled from 'styled-components'
-import { Colors } from '../../config'
 import { useIsMobile } from '../../hooks'
 import {
 	Col,
