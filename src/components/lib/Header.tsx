@@ -4,23 +4,14 @@ import styled, { css } from 'styled-components'
 import { ReactComponent as HomeIcon } from '../../assets/home-icon.svg'
 import { ReactComponent as LogoSlim } from '../../assets/logo-slim.svg'
 import { ReactComponent as Logo } from '../../assets/logo.svg'
-import {
-	Colors,
-	HEADER_HEIGHT_MOBILE,
-	HEADER_HEIGHT_NORMAL,
-	HEADER_HEIGHT_SLIM,
-	SCREEN_BREAKPOINTS,
-} from '../../config'
-import { useIsMobile } from '../../hooks'
-import { ResponsiveWrap, Row } from '../lib'
-import { Menu } from './Menu'
+import { Colors, HEADER_HEIGHT_NORMAL, HEADER_HEIGHT_SLIM, SCREEN_BREAKPOINTS } from '../../config'
+import { Row } from './Flexbox'
 import { NavLink } from './NavLink'
+import { ResponsiveWrap } from './ResponsiveWrap'
 
 const SCROLL_THRESHOLD = HEADER_HEIGHT_NORMAL - HEADER_HEIGHT_SLIM
 
 export function Header() {
-	const isMobile = useIsMobile()
-
 	const [isSticky, setSticky] = useState(false)
 
 	useLayoutEffect(() => {
@@ -32,21 +23,6 @@ export function Header() {
 			window.removeEventListener('scroll', handleScroll)
 		}
 	}, [])
-
-	if (isMobile) {
-		return (
-			<Wrap $isSticky={true} $isMobile={true}>
-				<ResponsiveWrap>
-					<MainRow $align={'center'}>
-						<Link to={'/'}>
-							<StyledLogoMobile />
-						</Link>
-						{isMobile && <Menu />}
-					</MainRow>
-				</ResponsiveWrap>
-			</Wrap>
-		)
-	}
 
 	return (
 		<Wrap $isSticky={isSticky}>
@@ -82,15 +58,15 @@ export function Header() {
 	)
 }
 
-const Wrap = styled.header<{ $isSticky?: boolean; $isMobile?: boolean }>`
-	height: ${({ $isMobile }) => ($isMobile ? `${HEADER_HEIGHT_MOBILE}px` : `${HEADER_HEIGHT_NORMAL}px`)};
+const Wrap = styled.header<{ $isSticky?: boolean }>`
+	height: ${HEADER_HEIGHT_NORMAL}px;
 	background: ${Colors.White};
-	${({ $isSticky, $isMobile }) =>
+	${({ $isSticky }) =>
 		$isSticky &&
 		css`
-			position: sticky;
-			top: ${$isMobile ? 0 : `-${SCROLL_THRESHOLD}px`};
 			z-index: 1;
+			position: sticky;
+			top: -${SCROLL_THRESHOLD}px;
 			box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
 		`}
 `
@@ -101,20 +77,12 @@ const StyledLogo = styled(Logo)`
 `
 const StyledLogoSlim = styled(LogoSlim)`
 	position: absolute;
-	top: -80px;
-	left: 0;
-	width: 192px;
-	height: 192px;
+	top: 10px;
+	width: 200px;
+	height: 200px;
 	@media screen and (max-width: ${SCREEN_BREAKPOINTS.SM - 1}px) {
 		display: none;
 	}
-`
-const StyledLogoMobile = styled(LogoSlim)`
-	position: absolute;
-	top: -70px;
-	left: 2rem;
-	width: 192px;
-	height: 192px;
 `
 const MainRow = styled(Row)<{ $isSticky?: boolean }>`
 	width: 100%;
@@ -124,7 +92,7 @@ const MainRow = styled(Row)<{ $isSticky?: boolean }>`
 		$isSticky &&
 		css`
 			position: relative;
-			top: 51px;
+			top: 52px;
 		`}
 `
 const Navigation = styled.nav`

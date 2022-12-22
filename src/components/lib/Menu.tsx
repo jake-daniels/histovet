@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { CgClose } from 'react-icons/cg'
 import { FaBars } from 'react-icons/fa'
 import styled, { css } from 'styled-components'
-import { Colors, HEADER_HEIGHT_MOBILE } from '../../config'
-import { Col } from '../lib'
+import { Colors, HEADER_HEIGHT_SLIM } from '../../config'
+import { Col, Row } from './Flexbox'
 import { NavLink } from './NavLink'
 
 export function Menu() {
@@ -35,8 +35,8 @@ export function Menu() {
 
 	return (
 		<MenuWrap>
-			{!isMenuOpen && <ClosedMenuIcon size={48} onClick={() => setMenuOpen(true)} />}
-			{isMenuOpen && <OpenMenuIcon size={64} onClick={() => setMenuVisible(false)} />}
+			{!isMenuOpen && <IconOpen size={40} onClick={() => setMenuOpen(true)} />}
+			{isMenuOpen && <IconClose size={54} onClick={() => setMenuVisible(false)} />}
 			{isMenuOpen && (
 				<List ref={listRef} onClick={() => setMenuOpen(false)}>
 					<MenuNavLink to={'/'}>
@@ -66,13 +66,14 @@ export function Menu() {
 	)
 }
 
-const MenuWrap = styled.div`
+const MenuWrap = styled(Row)`
 	position: relative;
+	align-items: center;
 `
 const List = styled(Col)`
 	position: fixed;
 	z-index: 1;
-	top: ${HEADER_HEIGHT_MOBILE}px;
+	top: ${HEADER_HEIGHT_SLIM}px;
 	right: 0px;
 	width: 100%;
 	background: linear-gradient(to right, ${Colors.Gradient.Left}, ${Colors.Gradient.Right});
@@ -98,10 +99,10 @@ const MenuIconCss = css`
 		color: ${Colors.Orange};
 	}
 `
-const ClosedMenuIcon = styled(FaBars)`
+const IconOpen = styled(FaBars)`
 	${MenuIconCss}
-	margin-right: 8px;
 `
-const OpenMenuIcon = styled(CgClose)`
+const IconClose = styled(CgClose)`
 	${MenuIconCss}
+	margin-right: -0.5rem;
 `

@@ -1,4 +1,6 @@
-import { Col, ResponsiveWrap, Text } from '../lib'
+import { Col } from './Flexbox'
+import { ResponsiveWrap } from './ResponsiveWrap'
+import { Text } from './Typography'
 
 export function Footer() {
 	return (

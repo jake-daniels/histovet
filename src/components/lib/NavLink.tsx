@@ -1,7 +1,7 @@
 import { NavLink as RouterNavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { Colors, SCREEN_BREAKPOINTS } from '../../config'
-import { Text } from '../lib'
+import { Text } from './Typography'
 
 export const NavLink = styled(RouterNavLink)`
 	display: flex;

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Colors } from '../../config'
-import { ResponsiveWrap } from '../lib'
+import { ResponsiveWrap } from './ResponsiveWrap'
 
 export function Page(props: { children: ReactNode; className?: string }) {
 	const { children, className } = props

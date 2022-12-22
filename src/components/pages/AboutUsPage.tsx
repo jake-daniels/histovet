@@ -15,7 +15,7 @@ export function AboutUsPage() {
 			<Row $align={'center'} $gap={'6rem'}>
 				<Col $gap={'4rem'} $align={isMobile ? 'center' : 'flex-start'}>
 					<Row $width={isMobile ? '100%' : '60%'}>
-						<Paragraph $textAlign={isMobile ? 'justify' : 'initial'}>
+						<Paragraph $textAlign={isMobile ? 'center' : 'initial'}>
 							Jsme dvojice veterinárních patologů, kteří se rozhodli spojit své síly, aby mohla vzniknout veterinární
 							histopatologická laboratoř, která Vám zaručí rychlé a dostupné vyšetření. Dohromady se diagnostické praxi
 							věnujeme téměř třicet let!
@@ -55,7 +55,7 @@ function Person(props: IPerson & { index: number }) {
 			<Col $gap={'2rem'} $align={'center'}>
 				<Headline $color={'orange'}>{name}</Headline>
 				<Image src={image} />
-				<Paragraph $textAlign={'justify'}>{description}</Paragraph>
+				<Paragraph $textAlign={'center'}>{description}</Paragraph>
 			</Col>
 		)
 	}

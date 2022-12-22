@@ -65,14 +65,14 @@ function Block(props: { image?: ReactNode; headline: ReactNode; content: ReactNo
 	const indentText = props.image || !smallScreen
 
 	return (
-		<Col $grow={1} $gap={'0.5rem'}>
+		<Col $grow={1} $gap={smallScreen ? '1.5rem ' : '0.5rem'}>
 			<Row $gap={indentText ? '2rem' : 0} $align={'center'}>
 				<Row $display={indentText ? 'flex' : 'none'} $minWidth={'4rem'} $minHeight={'4rem'}>
 					{props.image}
 				</Row>
 				{props.headline}
 			</Row>
-			<Row $padding={smallScreen ? 0 : '0 0 0 6rem'}> {props.content}</Row>
+			<Row $padding={smallScreen ? 0 : '0 0 0 6rem'}>{props.content}</Row>
 		</Col>
 	)
 }
