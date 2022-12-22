@@ -35,3 +35,12 @@ export const Link = styled(RouterLink)<{ $color?: TextColor }>`
 		text-decoration-color: ${Colors.Orange};
 	}
 `
+export const ExternalLink = styled.a<{ $color?: TextColor }>`
+	font-weight: 500;
+	color: ${({ $color }) => ColorMap[$color ?? 'black']};
+	text-decoration: underline;
+	&:hover {
+		color: ${Colors.Orange};
+		text-decoration-color: ${Colors.Orange};
+	}
+`

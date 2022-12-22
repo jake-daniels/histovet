@@ -1,6 +1,7 @@
 import { CSSProperties } from 'react'
 import styled from 'styled-components'
-import { ReactComponent as SvgImage } from '../../assets/home-page-ornament.svg'
+import { ReactComponent as OrnamentSvg } from '../../assets/ornament.svg'
+import { ReactComponent as BubbleSvg } from '../../assets/bubble.svg'
 
 interface IProps {
 	$top?: CSSProperties['top']
@@ -9,7 +10,8 @@ interface IProps {
 	$right?: CSSProperties['right']
 }
 
-const Ornament = styled(SvgImage)<IProps>`
+export const RightOrnament = styled(OrnamentSvg)<IProps>`
+	pointer-events: none;
 	z-index: -1;
 	position: absolute;
 	top: ${({ $top }) => $top};
@@ -17,7 +19,22 @@ const Ornament = styled(SvgImage)<IProps>`
 	left: ${({ $left }) => $left};
 	right: ${({ $right }) => $right};
 `
-export const LeftOrnament = styled(Ornament)<IProps>`
+export const LeftOrnament = styled(RightOrnament)<IProps>`
 	transform: scaleX(-1);
 `
-export const RightOrnament = styled(Ornament)<IProps>``
+
+export const LeftBubble = styled(BubbleSvg)<IProps>`
+	pointer-events: none;
+	z-index: -1;
+	position: absolute;
+	top: ${({ $top }) => $top};
+	bottom: ${({ $bottom }) => $bottom};
+	left: ${({ $left }) => $left};
+	right: ${({ $right }) => $right};
+`
+export const RightBubble = styled(LeftBubble)`
+	transform: scaleX(-1);
+`
+export const RightTopBubble = styled(LeftBubble)`
+	transform: scale(-1, -1);
+`
