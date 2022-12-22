@@ -12,6 +12,7 @@ const SCROLLBAR_WIDTH = '1rem'
 const Wrap = styled.div`
 	display: flex;
 	padding: 0 ${SIDE_PADDING};
+	z-index: 0;
 
 	@media screen and (min-width: 0) {
 		width: 100%;

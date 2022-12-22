@@ -1,11 +1,53 @@
-interface IProps {}
+import styled from 'styled-components'
+import { Colors } from '../../config'
+import { useIsMobile } from '../../hooks'
+import { Col, Flex, LeftOrnament, Page, RightOrnament, Text } from '../lib'
 
-export function PricingPage(props: IProps) {
-	const {} = props
+export function PricingPage() {
+	const isMobile = useIsMobile()
 
 	return (
-		<div>
-			<span>PricingPage</span>
-		</div>
+		<Page>
+			<Col $width={'100%'} $gap={'2rem'} $align={isMobile ? 'center' : 'flex-start'}>
+				<Text>Ceník vyšetření:</Text>
+				<Flex $direction={isMobile ? 'column' : 'row'} $gap={'2rem'} $wrap={'wrap'}>
+					<Card subject={'Histopatologické vyšetření (standardní biopsie)'} price={'900 Kč'} />
+					<Card subject={'Cytologie'} price={'500 Kč'} />
+				</Flex>
+				<Text $size={'small'}>
+					Cena je vždy stejná bez ohledu na počet bioptátů nebo zaslaných skel od jednoho pacienta.
+				</Text>
+				<Text>Další vyšetření:</Text>
+				<Flex $direction={isMobile ? 'column' : 'row'} $gap={'2rem'} $wrap={'wrap'}>
+					<Card subject={'Speciální barvení'} price={'350 Kč'} />
+					<Card subject={'Imunohistochemické vyšetření: podle typu protilátky'} price={'600 - 1200 Kč / protilátka'} />
+					<Card subject={'Odvápnění'} price={'350 Kč'} />
+					<Card subject={'Na požádání můžeme protokol vystavit v anglickém jazyce'} price={'0 Kč'} />
+				</Flex>
+			</Col>
+			<LeftOrnament $left={'0px'} $top={'2rem'} />
+			<RightOrnament $right={'0px'} $bottom={'1rem'} />
+		</Page>
 	)
 }
+
+function Card(props: { subject: string; price: string }) {
+	const { subject, price } = props
+
+	return (
+		<CardWrap>
+			<Text $color={'white'}>{subject}</Text>
+			{price}
+		</CardWrap>
+	)
+}
+
+const CardWrap = styled(Col)`
+	width: 15rem;
+	height: 5rem;
+	justify-content: space-between;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	background: ${Colors.Orange};
+	box-shadow: 3px 5px 4px rgba(0, 0, 0, 0.25);
+`

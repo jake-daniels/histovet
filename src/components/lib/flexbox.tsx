@@ -17,6 +17,8 @@ interface Props {
 	$justify?: CSSProperties['justifyContent']
 	$grow?: CSSProperties['flexGrow']
 	$direction?: CSSProperties['flexDirection']
+	$wrap?: CSSProperties['flexWrap']
+	$zIndex?: CSSProperties['zIndex']
 }
 
 const FlexboxProps = css<Props>`
@@ -35,6 +37,8 @@ const FlexboxProps = css<Props>`
 	justify-content: ${({ $justify }) => $justify};
 	flex-grow: ${({ $grow }) => $grow};
 	flex-direction: ${({ $direction }) => $direction};
+	flex-wrap: ${({ $wrap }) => $wrap};
+	z-index: ${({ $zIndex }) => $zIndex};
 `
 
 export const Flex = styled.div<Props>`

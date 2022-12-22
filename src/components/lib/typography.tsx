@@ -4,6 +4,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import { CSSProperties } from 'react'
 
 type TextColor = 'white' | 'black' | 'orange'
+type TextSize = 'normal' | 'small'
 
 const ColorMap: Record<TextColor, string> = {
 	white: Colors.White,
@@ -11,9 +12,10 @@ const ColorMap: Record<TextColor, string> = {
 	orange: Colors.Orange,
 }
 
-export const Text = styled.span<{ $color?: TextColor }>`
+export const Text = styled.span<{ $color?: TextColor; $size?: TextSize }>`
 	font-weight: 500;
 	color: ${({ $color }) => ColorMap[$color ?? 'black']};
+	font-size: ${({ $size }) => ($size === 'small' ? '12px' : '16px')};
 `
 export const Paragraph = styled.p<{ $color?: TextColor; $textAlign?: CSSProperties['textAlign'] }>`
 	font-weight: 500;

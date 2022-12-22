@@ -1,11 +1,10 @@
 import styled from 'styled-components'
 import BarboraImage from '../../assets/about-us-barbora-moldovan-putnova.png'
 import MisaSkoricImage from '../../assets/about-us-misa-skoric.png'
-import { ReactComponent as Ornament } from '../../assets/home-page-ornament.svg'
 import { SCREEN_BREAKPOINTS } from '../../config'
 import { useIsMobile } from '../../hooks'
 import { IPerson } from '../../types'
-import { Col, Flex, Headline, Page, Paragraph, Row, Text } from '../lib'
+import { Col, Flex, Headline, LeftOrnament, Page, Paragraph, RightOrnament, Row, Text } from '../lib'
 
 export function AboutUsPage() {
 	const isMobile = useIsMobile()
@@ -39,8 +38,8 @@ export function AboutUsPage() {
 					/>
 				</Col>
 			</Row>
-			<StyledOrnament1 />
-			<StyledOrnament2 />
+			<LeftOrnament $left={'0px'} $top={'2rem'} />
+			<RightOrnament $right={'0px'} $bottom={'1rem'} />
 		</Page>
 	)
 }
@@ -77,15 +76,4 @@ const Image = styled.img`
 	@media screen and (max-width: ${SCREEN_BREAKPOINTS.XS - 1}px) {
 		width: 60%;
 	}
-`
-const StyledOrnament1 = styled(Ornament)`
-	position: absolute;
-	right: 0;
-	bottom: 4rem;
-`
-const StyledOrnament2 = styled(Ornament)`
-	position: absolute;
-	left: -2rem;
-	top: 4rem;
-	transform: scaleX(-1);
 `

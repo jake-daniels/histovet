@@ -2,10 +2,9 @@ import { ReactNode } from 'react'
 import styled from 'styled-components'
 import { ReactComponent as BlockImage } from '../../assets/home-page-image-1.svg'
 import MainImageSrc from '../../assets/home-page-image-2.png'
-import { ReactComponent as Ornament } from '../../assets/home-page-ornament.svg'
 import { Colors, SCREEN_BREAKPOINTS } from '../../config'
 import { useWindowSize } from '../../hooks'
-import { Col, Headline, Link, Page, Paragraph, Row, Text } from '../lib'
+import { Col, Headline, LeftOrnament, Link, Page, Paragraph, RightOrnament, Row, Text } from '../lib'
 
 export function HomePage() {
 	return (
@@ -53,7 +52,8 @@ export function HomePage() {
 				</Col>
 				<MainImage src={MainImageSrc} />
 			</Row>
-			<StyledOrnament />
+			<LeftOrnament $left={'0px'} $top={'2rem'} />
+			<RightOrnament $right={'0px'} $bottom={'1rem'} />
 		</StyledPage>
 	)
 }
@@ -86,9 +86,4 @@ const MainImage = styled.img`
 	@media screen and (max-width: ${SCREEN_BREAKPOINTS.SM - 1}px) {
 		display: none;
 	}
-`
-const StyledOrnament = styled(Ornament)`
-	position: absolute;
-	right: 0;
-	bottom: -1rem;
 `

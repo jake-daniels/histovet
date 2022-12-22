@@ -72,7 +72,6 @@ const MenuWrap = styled(Row)`
 `
 const List = styled(Col)`
 	position: fixed;
-	z-index: 1;
 	top: ${HEADER_HEIGHT_SLIM}px;
 	right: 0px;
 	width: 100%;
