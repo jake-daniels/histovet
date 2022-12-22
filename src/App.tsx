@@ -1,15 +1,7 @@
 import { StrictMode } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AppContainer } from './components/container'
-import {
-	AboutUsPage,
-	ContactsPage,
-	HomePage,
-	NewsPage,
-	PricingPage,
-	RequestFormsPage,
-	SamplesInfoPage,
-} from './components/pages'
+import { AboutUsPage, ContactsPage, HomePage, NewsPage, PricingPage, SamplesInfoPage } from './components/pages'
 
 export function App() {
 	return (
@@ -32,7 +24,6 @@ export function App() {
 						<Route path={'pricing'} element={<PricingPage />} />
 						<Route path={'contacts'} element={<ContactsPage />} />
 						<Route path={'samples'} element={<SamplesInfoPage />} />
-						<Route path={'request-forms'} element={<RequestFormsPage />} />
 						<Route path={'news'} element={<NewsPage />} />
 					</Route>
 					<Route path={'*'} element={<Navigate to={'/'} />} />

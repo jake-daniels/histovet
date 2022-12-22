@@ -1,3 +1,4 @@
+import { Colors } from '../../config'
 import { useIsMobile } from '../../hooks'
 import {
 	Col,
@@ -17,12 +18,7 @@ export function ContactsPage() {
 
 	return (
 		<Page>
-			<Flex
-				$width={'100%'}
-				$direction={isMobile ? 'column' : 'row'}
-				$align={isMobile ? 'center' : 'initial'}
-				$justify={'space-between'}
-			>
+			<Flex $width={'100%'} $direction={isMobile ? 'column' : 'row'} $justify={'space-between'}>
 				<Col $gap={'2rem'}>
 					<Text>Kontakty</Text>
 					<Col $gap={'0.5rem'}>
@@ -49,7 +45,7 @@ export function ContactsPage() {
 					}
 					width={isMobile ? '100%' : 600}
 					height={isMobile ? 250 : 400}
-					style={{ border: 'none' }}
+					style={{ border: `2px solid ${Colors.White}`, borderRadius: 16 }}
 					allowFullScreen={false}
 					loading={'lazy'}
 					referrerPolicy={'no-referrer-when-downgrade'}

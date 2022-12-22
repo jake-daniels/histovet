@@ -16,7 +16,7 @@ export function Header() {
 
 	useLayoutEffect(() => {
 		const handleScroll = () => {
-			setSticky(window.scrollY > SCROLL_THRESHOLD)
+			setSticky(window.scrollY >= SCROLL_THRESHOLD)
 		}
 		window.addEventListener('scroll', handleScroll)
 		return () => {
@@ -39,14 +39,11 @@ export function Header() {
 						<NavLink to={'pricing'}>
 							<span>Ceník</span>
 						</NavLink>
-						<NavLink to={'contacts'}>
-							<span>Kontakty</span>
-						</NavLink>
 						<NavLink to={'samples'}>
 							<span>Zasílání vzorků</span>
 						</NavLink>
-						<NavLink to={'request-forms'}>
-							<span>Žádanky</span>
+						<NavLink to={'contacts'}>
+							<span>Kontakty</span>
 						</NavLink>
 						<NavLink to={'news'}>
 							<span>Aktuality</span>
@@ -77,12 +74,12 @@ const StyledLogo = styled(Logo)`
 `
 const StyledLogoSlim = styled(LogoSlim)`
 	position: absolute;
-	top: 10px;
-	width: 200px;
-	height: 200px;
-	@media screen and (max-width: ${SCREEN_BREAKPOINTS.SM - 1}px) {
+	top: 12px;
+	width: 180px;
+	height: 180px;
+	/* @media screen and (max-width: ${SCREEN_BREAKPOINTS.SM - 1}px) {
 		display: none;
-	}
+	} */
 `
 const MainRow = styled(Row)<{ $isSticky?: boolean }>`
 	width: 100%;

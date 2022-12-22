@@ -54,9 +54,6 @@ export function Menu() {
 					<MenuNavLink to={'samples'}>
 						<span>Zasílání vzorků</span>
 					</MenuNavLink>
-					<MenuNavLink to={'request-forms'}>
-						<span>Žádanky</span>
-					</MenuNavLink>
 					<MenuNavLink to={'news'}>
 						<span>Aktuality</span>
 					</MenuNavLink>

@@ -37,8 +37,8 @@ const MainRow = styled(Row)`
 `
 const Logo = styled(LogoSlim)`
 	position: absolute;
-	top: 0.75rem;
+	top: 14px;
 	left: 2rem;
-	width: 200px;
-	height: 200px;
+	width: 180px;
+	height: 180px;
 `
