@@ -1,12 +1,14 @@
 import { ReactNode } from 'react'
 import styled from 'styled-components'
 import { ReactComponent as BlockImage } from '../../assets/home-page-image-1.svg'
-import MainImageSrc from '../../assets/home-page-image-2.png'
 import { Colors, SCREEN_BREAKPOINTS } from '../../config'
+import { useAppContext } from '../../context'
 import { useWindowSize } from '../../hooks'
 import { Col, Headline, LeftOrnament, Link, Page, Paragraph, RightOrnament, Row, Text } from '../lib'
 
 export function HomePage() {
+	const { homePage: data } = useAppContext()
+
 	return (
 		<StyledPage>
 			<Row $align={'center'} $gap={'6rem'}>
@@ -50,7 +52,7 @@ export function HomePage() {
 						}
 					/>
 				</Col>
-				<MainImage src={MainImageSrc} />
+				<MainImage src={data.image} />
 			</Row>
 			<LeftOrnament $left={'0px'} $top={'2rem'} />
 			<RightOrnament $right={'0px'} $bottom={'1rem'} />

@@ -15,7 +15,7 @@ const ColorMap: Record<TextColor, string> = {
 export const Text = styled.span<{ $color?: TextColor; $size?: TextSize }>`
 	font-weight: 500;
 	color: ${({ $color }) => ColorMap[$color ?? 'black']};
-	font-size: ${({ $size }) => ($size === 'small' ? '12px' : '16px')};
+	font-size: ${({ $size }) => ($size === 'small' ? '12px' : 'inherit')};
 `
 export const Paragraph = styled.p<{ $color?: TextColor; $textAlign?: CSSProperties['textAlign'] }>`
 	font-weight: 500;

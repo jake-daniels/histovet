@@ -1,9 +1,12 @@
 import styled from 'styled-components'
 import { Colors } from '../../config'
+import { useAppContext } from '../../context'
 import { useIsMobile } from '../../hooks'
 import { Col, Flex, LeftOrnament, Page, RightOrnament, Text } from '../lib'
 
 export function PricingPage() {
+	const { pricing: data } = useAppContext()
+
 	const isMobile = useIsMobile()
 
 	return (
@@ -11,18 +14,19 @@ export function PricingPage() {
 			<Col $width={'100%'} $gap={'2rem'} $align={isMobile ? 'center' : 'flex-start'}>
 				<Text>Ceník vyšetření:</Text>
 				<Flex $direction={isMobile ? 'column' : 'row'} $gap={'2rem'} $wrap={'wrap'}>
+					{data.items.map((item, index) => (
+						<Card key={index} subject={item.name} price={item.price} />
+					))}
 					<Card subject={'Histopatologické vyšetření (standardní biopsie)'} price={'900 Kč'} />
-					<Card subject={'Cytologie'} price={'500 Kč'} />
 				</Flex>
 				<Text $size={'small'}>
 					Cena je vždy stejná bez ohledu na počet bioptátů nebo zaslaných skel od jednoho pacienta.
 				</Text>
 				<Text>Další vyšetření:</Text>
 				<Flex $direction={isMobile ? 'column' : 'row'} $gap={'2rem'} $wrap={'wrap'}>
-					<Card subject={'Speciální barvení'} price={'350 Kč'} />
-					<Card subject={'Imunohistochemické vyšetření: podle typu protilátky'} price={'600 - 1200 Kč / protilátka'} />
-					<Card subject={'Odvápnění'} price={'350 Kč'} />
-					<Card subject={'Na požádání můžeme protokol vystavit v anglickém jazyce'} price={'0 Kč'} />
+					{data.otherItems.map((item, index) => (
+						<Card key={index} subject={item.name} price={item.price} />
+					))}
 				</Flex>
 			</Col>
 			<LeftOrnament $left={'0px'} $top={'2rem'} />

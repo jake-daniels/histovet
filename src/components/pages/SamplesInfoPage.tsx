@@ -2,9 +2,21 @@ import { FaFileDownload } from 'react-icons/fa'
 import styled from 'styled-components'
 import { Colors, SCREEN_BREAKPOINTS } from '../../config'
 import { Col, Headline, LeftOrnament, Link, Page, Paragraph, RightOrnament, Row, Text } from '../lib'
-import RequestFormImage from '../../assets/request-form.png'
+import { useAppContext } from '../../context'
+
+function downloadFile(url: string, filename: string) {
+	const link = document.createElement('a')
+	link.href = url
+	link.download = filename
+	link.target = '_blank'
+	document.body.appendChild(link)
+	link.click()
+	document.body.removeChild(link)
+}
 
 export function SamplesInfoPage() {
+	const { samples: data } = useAppContext()
+
 	return (
 		<Page>
 			<Row $width={'100%'} $gap={'4rem'} $align={'flex-start'} $justify={'space-between'}>
@@ -12,50 +24,36 @@ export function SamplesInfoPage() {
 					<Headline $color={'orange'}>Zasílání vzorků</Headline>
 					<Row $gap={'1rem'} $align={'center'}>
 						<Text>Žádanka ke stažení zde</Text>
-						<DownloadButton>
+						<DownloadButton onClick={() => downloadFile(data.file, 'HistoVet - žádanka')}>
 							<Row $align={'center'} $gap={'0.5rem'}>
 								<span>Stáhnout</span>
 								<FaFileDownload />
 							</Row>
 						</DownloadButton>
 					</Row>
-					<Paragraph>
-						Odběr a fixace vzorku k histopatologickému vyšetření viz zde (tady by měl být link na info o odběru vzorků).
-						Vzorek odešlete Vámi zvolenou přepravní společností nebo svozem na adresu:
-					</Paragraph>
+					<Paragraph>{data.text1}</Paragraph>
 					<Row>
 						<Link to={'/contacts'}>
 							<Col $gap={'0.5rem'}>
-								<span>HISTOS s.r.o.</span>
-								<span>Zábrdovická 15/16a</span>
-								<span>615 00 BRNO</span>
+								{data.address
+									.split('\n')
+									.filter(Boolean)
+									.map((value, index) => (
+										<span key={index}>{value}</span>
+									))}
 							</Col>
 						</Link>
 					</Row>
 					<Col $gap={'1rem'}>
-						<Paragraph>Co se děje dál…</Paragraph>
-						<Paragraph>
-							24-48 hodin fixovaný vzorek je v laboratoři „přikrojen“ (je vybrána reprezentativní část, okraje resekce
-							apod.) a je připraven parafinový tkáňový blok a zhotoveny histologické řezy, které jsou barveny tzv.
-							přehledným barvením (hematoxylinem a eozinem). Celý tento proces trvá jeden až dva dny. Pokud se jedná o
-							tvrdé tkáně, je nutné je nejprve „odvápnit“, což celý proces prodlouží v závislosti na velikosti vzorku o
-							jeden den až několik týdnů (například v případě resekátů čelistí).
-						</Paragraph>
-						<Paragraph>
-							Patolog připravené preparáty vyšetří v co nejkratším čase po jejich zhotovení, většinou do druhého dne.
-						</Paragraph>
-						<Paragraph>
-							Výsledky vyšetření jsou zaslány emailem (emailovou adresu prosím uvádějte do žádanky) společně s
-							fakturačními údaji.
-						</Paragraph>
-						<Paragraph>Cytologické vzorky jsou ihned obarveny a většinou vyšetřeny ještě v den doručení.</Paragraph>
-						<Paragraph>
-							Vzorky ve formalínu jsou v laboratoři uchovávány cca měsíc, parafinové bloky a skla uchováváme po dobu cca
-							jednoho roku pro případná další doplňková vyšetření.
-						</Paragraph>
+						{data.text2
+							.split('\n')
+							.filter(Boolean)
+							.map((value, index) => (
+								<Paragraph key={index}>{value}</Paragraph>
+							))}
 					</Col>
 				</Col>
-				<Image src={RequestFormImage} />
+				<Image src={data.image} />
 			</Row>
 			<LeftOrnament $left={'0px'} $top={'2rem'} />
 			<RightOrnament $right={'0px'} $bottom={'1rem'} />

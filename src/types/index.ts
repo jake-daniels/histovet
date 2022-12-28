@@ -1,3 +1,5 @@
+export * from './cms'
+
 export interface ISize {
 	width: number
 	height: number
