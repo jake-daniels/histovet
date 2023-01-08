@@ -22,7 +22,7 @@ export function ContactsPage() {
 	return (
 		<Page>
 			<Flex $width={'100%'} $direction={isMobile ? 'column' : 'row'} $justify={'space-between'}>
-				<Col $gap={'2rem'}>
+				<Col $gap={'2rem'} $width={isMobile ? '100%' : '40%'}>
 					<Text>Kontakty</Text>
 					<Col $gap={'0.5rem'}>
 						<Row $gap={'0.5rem'}>
@@ -52,16 +52,18 @@ export function ContactsPage() {
 							))}
 					</Col>
 				</Col>
-				<iframe
-					title={'location-preview'}
-					src={data.location}
-					width={isMobile ? '100%' : 600}
-					height={isMobile ? 250 : 400}
-					style={{ border: `2px solid ${Colors.White}`, borderRadius: 16 }}
-					allowFullScreen={false}
-					loading={'lazy'}
-					referrerPolicy={'no-referrer-when-downgrade'}
-				/>
+				<Flex $width={isMobile ? '100%' : '60%'} $justify={'flex-end'}>
+					<iframe
+						title={'location-preview'}
+						src={data.location}
+						width={'100%'}
+						height={isMobile ? 250 : 500}
+						style={{ border: `2px solid ${Colors.White}`, borderRadius: 16 }}
+						allowFullScreen={false}
+						loading={'lazy'}
+						referrerPolicy={'no-referrer-when-downgrade'}
+					/>
+				</Flex>
 			</Flex>
 			<LeftBubble width={'25%'} $left={'4rem'} $top={'2rem'} />
 			<RightBubble width={'10%'} $left={'30%'} $top={'10rem'} />

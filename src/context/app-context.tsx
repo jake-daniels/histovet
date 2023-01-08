@@ -66,8 +66,6 @@ export function AppContextProvider(props: { children: ReactElement }) {
 
 			const response = await res.json()
 
-			console.log(response)
-
 			const data = formatData(response.result)
 
 			setValue(data)

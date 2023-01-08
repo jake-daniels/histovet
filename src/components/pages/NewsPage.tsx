@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import styled from 'styled-components'
 import { SCREEN_BREAKPOINTS } from '../../config'
 import { useAppContext } from '../../context'
@@ -8,11 +9,16 @@ import { Col, Flex, Headline, LeftOrnament, Page, Paragraph, RightOrnament } fro
 export function NewsPage() {
 	const { news: data } = useAppContext()
 
+	const isLast = (index: number) => index === data.items.length - 1
+
 	return (
 		<Page>
 			<Col $gap={'2rem'}>
 				{data.items.reverse().map((item, index) => (
-					<Article key={index} index={index} {...item} />
+					<Fragment>
+						<Article key={index} index={index} {...item} />
+						{!isLast(index) && <Separator />}
+					</Fragment>
 				))}
 			</Col>
 			<LeftOrnament $left={'0px'} $top={'2rem'} />
@@ -59,4 +65,12 @@ const Image = styled.img`
 const ArticleDate = styled.span`
 	font-size: 14px;
 	color: grey;
+`
+const Separator = styled.div`
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 1px;
+	background: lightgrey;
+	border: none;
 `
