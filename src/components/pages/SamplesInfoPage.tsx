@@ -1,7 +1,7 @@
 import { FaFileDownload } from 'react-icons/fa'
 import styled from 'styled-components'
 import { Colors, SCREEN_BREAKPOINTS } from '../../config'
-import { Col, Headline, LeftOrnament, Link, Page, Paragraph, RightOrnament, Row, Text } from '../lib'
+import { Col, ExternalLink, Headline, LeftOrnament, Link, Page, Paragraph, RightOrnament, Row, Text } from '../lib'
 import { useAppContext } from '../../context'
 
 function downloadFile(url: string, filename: string) {
@@ -24,14 +24,20 @@ export function SamplesInfoPage() {
 					<Headline $color={'orange'}>Zasílání vzorků</Headline>
 					<Row $gap={'1rem'} $align={'center'}>
 						<Text>Žádanka ke stažení zde</Text>
-						<DownloadButton onClick={() => downloadFile(data.file, 'HistoVet - žádanka')}>
+						<DownloadButton onClick={() => downloadFile(data.requestFormFile, 'HistoVet - žádanka')}>
 							<Row $align={'center'} $gap={'0.5rem'}>
 								<span>Stáhnout</span>
 								<FaFileDownload />
 							</Row>
 						</DownloadButton>
 					</Row>
-					<Paragraph>{data.text1}</Paragraph>
+					<Paragraph>
+						Odběr a fixace vzorku k histopatologickému vyšetření{' '}
+						<ExternalLink onClick={() => downloadFile(data.manualFile, 'HistoVet - odběr a fixace vzorků')}>
+							viz zde
+						</ExternalLink>
+						. Vzorek odešlete Vámi zvolenou přepravní společností nebo svozem na adresu:
+					</Paragraph>
 					<Row>
 						<Link to={'/contacts'}>
 							<Col $gap={'0.5rem'}>

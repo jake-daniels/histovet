@@ -47,7 +47,8 @@ export function AppContextProvider(props: { children: ReactElement }) {
 		})
 
 		data.samples.image = result.find((x: any) => x._id === data.samples.image.asset._ref)?.url ?? ''
-		data.samples.file = result.find((x: any) => x._id === data.samples.requestForm.asset._ref)?.url ?? ''
+		data.samples.requestFormFile = result.find((x: any) => x._id === data.samples.requestForm.asset._ref)?.url ?? ''
+		data.samples.manualFile = result.find((x: any) => x._id === data.samples.manual.asset._ref)?.url ?? ''
 
 		data.news.items.forEach((item: any) => {
 			item.image = result.find((x: any) => x._id === item.image.asset._ref)?.url ?? ''

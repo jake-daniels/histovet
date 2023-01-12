@@ -44,7 +44,13 @@ function Article(props: CMS_NewsItem & { index: number }) {
 	}
 
 	return (
-		<Flex $align={'flex-start'} $gap={'4rem'} $direction={index % 2 === 0 ? 'row-reverse' : 'row'}>
+		<Flex
+			$width={'100%'}
+			$align={'flex-start'}
+			$justify={'space-between'}
+			$gap={'4rem'}
+			$direction={index % 2 === 0 ? 'row-reverse' : 'row'}
+		>
 			<Image src={image} />
 			<Col $gap={'1rem'}>
 				<Headline $color={'orange'}>{title}</Headline>

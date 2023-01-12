@@ -17,11 +17,8 @@ export function PricingPage() {
 					{data.items.map((item, index) => (
 						<Card key={index} subject={item.name} price={item.price} />
 					))}
-					<Card subject={'Histopatologické vyšetření (standardní biopsie)'} price={'900 Kč'} />
 				</Flex>
-				<Text $size={'small'}>
-					Cena je vždy stejná bez ohledu na počet bioptátů nebo zaslaných skel od jednoho pacienta.
-				</Text>
+				<Text $size={'small'}>{data.note}</Text>
 				<Text>Další vyšetření:</Text>
 				<Flex $direction={isMobile ? 'column' : 'row'} $gap={'2rem'} $wrap={'wrap'}>
 					{data.otherItems.map((item, index) => (

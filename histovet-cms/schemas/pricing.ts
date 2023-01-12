@@ -10,6 +10,11 @@ export const Pricing = {
 			of: [{ type: 'PricingItem' }],
 		},
 		{
+			name: 'note',
+			title: 'Note',
+			type: 'string',
+		},
+		{
 			name: 'otherItems',
 			title: 'Other Items',
 			type: 'array',

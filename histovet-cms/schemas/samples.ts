@@ -4,9 +4,9 @@ export const Samples = {
 	title: 'Samples',
 	fields: [
 		{
-			name: 'text1',
-			title: 'Text 1',
-			type: 'text',
+			name: 'manual',
+			title: 'Manual',
+			type: 'file',
 		},
 		{
 			name: 'address',

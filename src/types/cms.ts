@@ -19,6 +19,7 @@ export interface CMS_Person {
 
 export interface CMS_PricingPage {
 	items: CMS_PricingItem[]
+	note: string
 	otherItems: CMS_PricingItem[]
 }
 
@@ -28,10 +29,10 @@ export interface CMS_PricingItem {
 }
 
 export interface CMS_SamplesPage {
-	text1: string
+	requestFormFile: string
+	manualFile: string
 	address: string
 	text2: string
-	file: string
 	image: string
 }
 
