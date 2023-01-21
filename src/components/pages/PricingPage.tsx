@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Colors } from '../../config'
 import { useAppContext } from '../../context'
 import { useIsMobile } from '../../hooks'
-import { Col, Flex, LeftOrnament, Page, RightOrnament, Text } from '../lib'
+import { Col, Flex, LeftOrnament, Page, RightOrnament, Row, Text } from '../lib'
 
 export function PricingPage() {
 	const { pricing: data } = useAppContext()
@@ -18,7 +18,11 @@ export function PricingPage() {
 						<Card key={index} subject={item.name} price={item.price} />
 					))}
 				</Flex>
-				<Text $size={'small'}>{data.note}</Text>
+				<Row>
+					<Text>
+						<b>{data.note}</b>
+					</Text>
+				</Row>
 				<Text>Další vyšetření:</Text>
 				<Flex $direction={isMobile ? 'column' : 'row'} $gap={'2rem'} $wrap={'wrap'}>
 					{data.otherItems.map((item, index) => (
